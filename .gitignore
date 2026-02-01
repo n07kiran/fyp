@@ -1,0 +1,4 @@
+venv/
+
+# Dataset folder
+AneRBC_dataset/
