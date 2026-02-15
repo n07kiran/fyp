@@ -2,3 +2,5 @@ venv/
 
 # Dataset folder
 AneRBC_dataset/
+
+.DS_Store
