@@ -1,0 +1,11 @@
+# AneRBC project requirements
+# Python 3.11
+
+tensorflow>=2.16,<2.19
+scikit-learn
+pandas
+numpy
+matplotlib
+seaborn
+jupyter
+ipykernel

@@ -1,4 +1,5 @@
 venv/
+.venv-tf311/
 
 # Dataset folder
 AneRBC_dataset/
