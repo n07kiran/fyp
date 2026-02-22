@@ -1,0 +1,3 @@
+,No_of_images,No_of_healthy_images,No_of_anemic_images,image_resolution,No_of_CBC_reports
+AneRBC-I,1000,500,500,1224x960,1000
+AneRBC-II,12000,6000,6000,306x320,1000

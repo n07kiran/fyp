@@ -1,38 +1,46 @@
-# Guidance for AI coding agents — AneRBC project
-
-This file contains concise, actionable guidance to help AI agents be immediately productive in this repository.
+AneRBC project — quick developer guide
 
 Overview
-- The repo is a Python-based data processing / dataset prep project for RBC morphology (AneRBC dataset).
-  - notebooks and environment: `Code/main.ipynb` and `Code/requirements.txt`.
 
-Key conventions and patterns (do not assume defaults)
-- File layout is data-first: scripts expect dataset folders relative to repo root. Use absolute paths only when necessary.
-- CBC report filenames follow an index + suffix pattern (e.g. `001_a.txt`) — suffix `_a` indicates anemic; mirror patterns for healthy individuals.
-- Keywords are CSV-based; avoid introducing alternate storage formats without updating the three main scripts.
-- There are no unit tests or CI in the repo; changes to parsing logic should be verified by running scripts on a small subset of `AneRBC_dataset/` and inspecting outputs.
+Quick environment setup (macOS, zsh)
 
-Developer workflows and commands
-- Create environment and install deps (work from repo root):
-  source .venv/bin/activate
-  pip install -r Code/requirements.txt
+```bash
+source .venv/bin/activate
 
-Integration points & external dependencies
-- Primary dependency: Python packages listed in `Code/requirements.txt` (used by notebooks and scripts).
-- Data: the `AneRBC_dataset/` directory is authoritative; scripts read raw `.txt` CBC reports and existing morphology reports.
-- Notebooks (in `Code/`) are used for interactive data exploration and training; prefer reproducing key steps from the notebook in scripts for automation.
+- To confirm activation, run `which python` — path should include `.venv`.
+# AneRBC project — quick developer guide
 
-Editing guidance for AI agents
-- When modifying parsing logic, make small, reversible changes and add a short runnable example script or snippet demonstrating the change.
-- Avoid large refactors: this repo uses simple script-based orchestration rather than a service architecture.
+## Overview
 
-Examples from the codebase
-- Input example path: `AneRBC_dataset/AneRBC-I/Anemic_individuals/CBC_reports/001_a.txt` — use this pattern for unit/manual tests.
-- Config-like file: `all_morphology_keywords.csv` — treat it as the single source of truth for morphology terms.
+- **AneRBC_dataset:** contains the original image dataset and reports used for training and analysis.
+- **Code:** contains project code, notebooks and utilities. Key folder: `Code/Fusion_Model` (dataset prep, training, evaluation, utils).
+- **research papers:** referenced papers and the dataset description (see `AneRBC_Image_Dataset_Description.pdf`).
+ - **AneRBC_dataset:** contains the original image dataset and reports used for training and analysis. See [AneRBC_dataset](AneRBC_dataset/).
+ - **Code:** contains project code, notebooks and utilities. Key folder: [Code/Fusion_Model](Code/Fusion_Model/) (dataset prep, training, evaluation, utils). See [Code](Code/) for top-level scripts and [Code/requirements.txt](Code/requirements.txt) for dependencies.
+ - **research papers:** referenced papers and the dataset description. See [research papers](research%20papers/).
 
-If anything is ambiguous
-- Ask for a sample CBC report or a small subset of `AneRBC_dataset/` to validate parsing changes.
-- Request clarification on desired output CSV schema before altering `extract_rbc_keywords.py` outputs.
+## Quick environment setup (macOS, zsh)
 
-Next steps / How to iterate
-- After implementing changes, run the three main scripts on a small subset and share the produced CSVs so we can verify correctness.
+- Create and activate a virtualenv (recommended name: `.venv`):
+
+```bash
+source .venv/bin/activate
+```
+
+- To confirm activation, run `which python` — path should include `.venv`.
+
+## Notes & conventions
+
+- Notebooks are the canonical, reproducible workflow; prefer notebooks for step-by-step experiments and the scripts for automation.
+- Keep virtualenvs out of version control (add to `.gitignore`).
+- Prefer simple, straightforward code; avoid complex patterns and abstractions.
+Notes & conventions
+- Notebooks are the canonical, reproducible workflow; prefer notebooks for step-by-step experiments and the scripts for automation.
+- Keep virtualenvs out of version control (add to `.gitignore`).
+- I want the code to be very simple and straightforward, so - I avoid complex patterns and abstractions.
+
+## Checklist for new code
+- [ ] is the venv activated and dependencies installed?
+- [ ] is the code working and tested in a notebook?
+- [ ] is the code simple and straightforward?
+- [ ] have you written a proper markdown cell to the parent cell for your code? 
