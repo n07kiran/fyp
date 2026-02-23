@@ -2,6 +2,7 @@
 # Python 3.11
 
 tensorflow>=2.16,<2.19
+tensorflow-metal          # Apple Silicon GPU acceleration (M1/M2/M3/M4); safe to omit on non-Mac
 scikit-learn
 pandas
 numpy

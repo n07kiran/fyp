@@ -3,5 +3,6 @@ venv/
 
 # Dataset folder
 AneRBC_dataset/
+AneRBC_dataset.zip
 
 .DS_Store
