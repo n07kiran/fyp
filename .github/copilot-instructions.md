@@ -38,7 +38,7 @@ Notes & conventions
 - Notebooks are the canonical, reproducible workflow; prefer notebooks for step-by-step experiments and the scripts for automation.
 - Keep virtualenvs out of version control (add to `.gitignore`).
 - I want the code to be very simple and straightforward, so - I avoid complex patterns and abstractions.
-
+- 4 pretrained modeles : VGG16, Resnet152V2, MobileNetv2, InceptionV3
 ## Checklist for new code
 - [ ] is the venv activated and dependencies installed?
 - [ ] is the code working and tested in a notebook?
