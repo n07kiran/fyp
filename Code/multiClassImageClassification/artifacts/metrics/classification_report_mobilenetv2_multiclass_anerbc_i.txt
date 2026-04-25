@@ -1,0 +1,10 @@
+              precision    recall  f1-score   support
+
+     Healthy     0.8209    0.7333    0.7746        75
+  Microcytic     0.6818    0.7377    0.7087        61
+  Normocytic     0.4615    0.4615    0.4615        13
+  Macrocytic     0.2500    1.0000    0.4000         1
+
+    accuracy                         0.7133       150
+   macro avg     0.5536    0.7331    0.5862       150
+weighted avg     0.7294    0.7133    0.7182       150

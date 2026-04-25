@@ -12,3 +12,8 @@ changing the majority classes.
 Rotation, flip, and translation were used. These are safe for blood smear
 images because slide orientation and cell position can naturally vary during
 image capture.
+
+## What are the four classes in multiclass image classification?
+
+The four classes are Healthy, Microcytic, Normocytic, and Macrocytic. The model
+uses one output neuron per class with softmax activation.

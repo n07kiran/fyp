@@ -1,0 +1,2 @@
+rank,case,config,model,accuracy,macro_f1,weighted_f1,macro_precision,macro_recall
+1,Case 2,transfer_frozen,InceptionV3,0.7733333333333333,0.4980607627666451,0.7696416002298356,0.5245317156236696,0.4839176124422026
