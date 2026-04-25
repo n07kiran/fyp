@@ -7,7 +7,7 @@ This table compares only **Case 2** (transfer learning with frozen base) across 
 | VGG16 | 0.6600 | 0.8329 | From saved comparison CSV files |
 | InceptionV3 | 0.8150 | 0.8650 | From saved comparison CSV files |
 | MobileNetV2 | 0.7850 | 0.8517 | From saved comparison CSV files |
-| ResNet152V2 | 0.8100 | N/A | AneRBC-II comparison CSV not found in artifacts/metrics |
+| ResNet152V2 | 0.8100 | 0.8333 | From saved comparison CSV files |
 
 ## Metric Source Files
 
@@ -18,3 +18,4 @@ This table compares only **Case 2** (transfer learning with frozen base) across 
 - artifacts/metrics/comparison_metrics_mobilenetv2_anerbc_i.csv
 - artifacts/metrics/comparison_metrics_mobilenetv2_anerbc_ii.csv
 - artifacts/metrics/comparison_metrics_resnet152v2_anerbc_i.csv
+- artifacts/metrics/comparison_metrics_resnet152v2_anerbc_ii.csv
