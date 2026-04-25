@@ -39,6 +39,8 @@ Notes & conventions
 - Keep virtualenvs out of version control (add to `.gitignore`).
 - I want the code to be very simple and straightforward, so - I avoid complex patterns and abstractions.
 - Always create a respective .md file to explain each file changes you make, Also add simple markdown cells to the parent notebook to explain the code you write in the respective code cell.
+- There is a folder named, `Viva_questions1`, If your changes can be of a potential question, You need analyze you changes and the viva files and add or update the viva questions and answers if needed. 
+- Use .ipynb notebooks, avoid .py scripts unless necessary for automation or utility functions.
 - 4 pretrained modeles : VGG16, Resnet152V2, MobileNetv2, InceptionV3
 ## Checklist for new code
 - [ ] is the venv activated and dependencies installed?
