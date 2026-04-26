@@ -140,3 +140,51 @@ training and hurt generalization.
 So in stage 2 we unfreeze only selected top non-BatchNorm layers, keep BatchNorm
 frozen, and still call the CNN base with `training=False` to avoid changing
 BatchNorm behavior while fine-tuning.
+
+## How did we convert multiclass labels into binary labels in the new fusion notebooks?
+
+The source split files still store the original multiclass `final_class` IDs.
+In data loading, we first validate that labels are in `{0, 1, 2, 3}` and then
+collapse them as:
+
+`binary_label = (final_class != 0)`
+
+So the mapping is:
+- `0 -> Healthy`
+- `1, 2, 3 -> Anemia`
+
+This keeps the original data source unchanged while making the training target
+strictly binary.
+
+## Why did we use a sigmoid output with a 0.5 threshold for prediction?
+
+For binary classification, a single-neuron sigmoid head outputs probability of
+the positive class (Anemia). The model then predicts:
+
+- Anemia if probability `>= 0.5`
+- Healthy if probability `< 0.5`
+
+This setup is directly compatible with `binary_crossentropy` and is easy to
+interpret clinically as risk-like probability.
+
+## Why does VGG16 use different preprocessing than MobileNetV2/InceptionV3/ResNet152V2?
+
+In our project, we reuse old binary checkpoints as the pretrained image base for
+fusion. To stay consistent with how those checkpoints were trained:
+
+- VGG16 uses `vgg16_caffe` style preprocessing (RGB->BGR and ImageNet mean subtraction).
+- MobileNetV2, InceptionV3, and ResNet152V2 use `unit_range` (`image / 255.0`).
+
+Matching preprocessing to checkpoint history is important; if preprocessing is
+mismatched, transfer performance can drop even when architecture is correct.
+
+## Why do we load only the old CNN base and not the old binary classifier head?
+
+The old checkpoint classifier head was trained for image-only classification.
+The fusion model has a different task structure because it combines:
+
+- image embedding from CNN base
+- CBC embedding from tabular branch
+
+So we reuse only the CNN feature extractor weights and build a new fusion head.
+The notebooks also include an assertion to ensure old head layers are not reused.

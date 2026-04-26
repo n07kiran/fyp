@@ -37,3 +37,16 @@ Added medium-level viva Q&A tied to the new image + CBC fusion workflow:
 File updated:
 
 - `viva_questions/medium_viva_questions.md`
+
+## Additional update (binary newFusionModel implementation)
+
+Added medium-level viva Q&A tied to the new binary Image + CBC fusion notebooks:
+
+- How multiclass `final_class` was collapsed into binary labels (`0` vs `1,2,3`)
+- Why sigmoid + `binary_crossentropy` + `0.5` threshold was used
+- Why backbone preprocessing differs (`vgg16_caffe` vs `unit_range`)
+- Why only the old CNN base is reused while replacing the old classifier head
+
+File updated:
+
+- `viva_questions/medium_viva_questions.md`

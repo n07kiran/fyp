@@ -1,0 +1,14 @@
+Backbone: InceptionV3
+Test accuracy: 0.853333
+Binary F1 (Anemia): 0.849315
+Precision (Anemia): 0.873239
+Recall (Anemia): 0.826667
+
+              precision    recall  f1-score   support
+
+     Healthy     0.8354    0.8800    0.8571        75
+      Anemia     0.8732    0.8267    0.8493        75
+
+    accuracy                         0.8533       150
+   macro avg     0.8543    0.8533    0.8532       150
+weighted avg     0.8543    0.8533    0.8532       150

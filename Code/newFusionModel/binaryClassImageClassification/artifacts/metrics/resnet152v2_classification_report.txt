@@ -1,0 +1,14 @@
+Backbone: ResNet152V2
+Test accuracy: 0.860000
+Binary F1 (Anemia): 0.855172
+Precision (Anemia): 0.885714
+Recall (Anemia): 0.826667
+
+              precision    recall  f1-score   support
+
+     Healthy     0.8375    0.8933    0.8645        75
+      Anemia     0.8857    0.8267    0.8552        75
+
+    accuracy                         0.8600       150
+   macro avg     0.8616    0.8600    0.8598       150
+weighted avg     0.8616    0.8600    0.8598       150

@@ -1,0 +1,14 @@
+Backbone: VGG16
+Test accuracy: 0.866667
+Binary F1 (Anemia): 0.859155
+Precision (Anemia): 0.910448
+Recall (Anemia): 0.813333
+
+              precision    recall  f1-score   support
+
+     Healthy     0.8313    0.9200    0.8734        75
+      Anemia     0.9104    0.8133    0.8592        75
+
+    accuracy                         0.8667       150
+   macro avg     0.8709    0.8667    0.8663       150
+weighted avg     0.8709    0.8667    0.8663       150
