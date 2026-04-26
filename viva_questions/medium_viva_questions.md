@@ -118,3 +118,25 @@ Macrocytic=61; `N=755`, `K=4`):
 So the rare classes (Normocytic/Macrocytic) get ~3.09× more importance in the
 loss than a typical sample, which helps the model not ignore them even though
 Healthy/Microcytic are much more common.
+
+## Why did we use feature-level fusion (image embedding + CBC embedding) instead of one single input type?
+
+The image and CBC branches capture different clinical signals:
+
+- The image branch captures morphology patterns in RBC images.
+- The CBC branch captures hematology measurements (for example HGB, MCV, RDW_CV).
+
+Feature-level fusion combines both representations before classification, so the
+classifier can learn interactions between morphology and blood-count context.
+This is more informative than image-only or CBC-only modeling for multimodal
+clinical data.
+
+## Why are BatchNorm layers kept frozen during stage-2 fine-tuning?
+
+BatchNorm layers store running mean/variance statistics from pretraining.
+With a relatively small medical dataset, updating those statistics can destabilize
+training and hurt generalization.
+
+So in stage 2 we unfreeze only selected top non-BatchNorm layers, keep BatchNorm
+frozen, and still call the CNN base with `training=False` to avoid changing
+BatchNorm behavior while fine-tuning.

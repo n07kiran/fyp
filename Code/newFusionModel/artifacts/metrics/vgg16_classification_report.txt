@@ -1,0 +1,15 @@
+Backbone: VGG16
+Test accuracy: 0.726667
+Macro F1: 0.512659
+Weighted F1: 0.728067
+
+              precision    recall  f1-score   support
+
+     Healthy     0.7765    0.8800    0.8250        75
+  Microcytic     0.7609    0.5738    0.6542        61
+  Normocytic     0.5333    0.6154    0.5714        13
+  Macrocytic     0.0000    0.0000    0.0000         1
+
+    accuracy                         0.7267       150
+   macro avg     0.5177    0.5173    0.5127       150
+weighted avg     0.7439    0.7267    0.7281       150

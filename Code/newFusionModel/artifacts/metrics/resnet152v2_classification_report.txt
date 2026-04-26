@@ -1,0 +1,15 @@
+Backbone: ResNet152V2
+Test accuracy: 0.786667
+Macro F1: 0.517563
+Weighted F1: 0.779164
+
+              precision    recall  f1-score   support
+
+     Healthy     0.8250    0.8800    0.8516        75
+  Microcytic     0.7619    0.7869    0.7742        61
+  Normocytic     0.8000    0.3077    0.4444        13
+  Macrocytic     0.0000    0.0000    0.0000         1
+
+    accuracy                         0.7867       150
+   macro avg     0.5967    0.4936    0.5176       150
+weighted avg     0.7917    0.7867    0.7792       150

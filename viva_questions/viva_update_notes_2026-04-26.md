@@ -25,3 +25,15 @@ Added one more medium-level Q&A tied to our recent binary-classification results
 - `viva_questions/easy_viva_questions.md`
 - `viva_questions/medium_viva_questions.md`
 - `viva_questions/hard_viva_questions.md`
+
+## Additional update (newFusionModel notebook rewrite)
+
+Added medium-level viva Q&A tied to the new image + CBC fusion workflow:
+
+- Why feature-level multimodal fusion is used (image branch + CBC branch)
+- Why BatchNorm is kept frozen during stage-2 fine-tuning while unfreezing only
+	selected top CNN layers
+
+File updated:
+
+- `viva_questions/medium_viva_questions.md`
