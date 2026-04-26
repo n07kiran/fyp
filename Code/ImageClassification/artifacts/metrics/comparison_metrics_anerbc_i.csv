@@ -1,0 +1,2 @@
+rank,case,config,accuracy,f1,precision,recall
+1,Case 2,transfer_frozen,0.795,0.7918781725888325,0.8041237113402062,0.78

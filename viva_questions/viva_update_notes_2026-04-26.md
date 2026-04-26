@@ -13,6 +13,13 @@ Added viva-ready Q&A for common deep-learning training terms, explicitly tied to
 - Sparse categorical crossentropy + softmax (what/why)
 - Alternative loss/activation options and why the notebook’s choices fit
 
+Added one more medium-level Q&A tied to our recent binary-classification results:
+
+- Why our project’s binary accuracy can differ from the AneRBC paper (transfer
+	learning vs scratch + preprocessing/fine-tuning differences)
+- Sigmoid output vs logits (`from_logits=True`) in binary classification, and
+	why both are valid when paired with the correct loss
+
 ## Files updated
 
 - `viva_questions/easy_viva_questions.md`

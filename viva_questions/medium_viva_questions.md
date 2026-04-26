@@ -49,6 +49,49 @@ We use validation results for two key training controls:
 The important point: validation data is used for monitoring/selection, not for
 weight updates.
 
+## Why can our binary-classification accuracy differ from the AneRBC paper (same dataset)?
+
+Even with the same dataset name (AneRBC-I / AneRBC-II), results can differ
+because the *full experimental setup* is not identical.
+
+In our project, the saved binary results we compare are **Case 2 (transfer
+learning with a frozen base)**.
+
+In the AneRBC paper (Tables 6–7), the authors report **two runs**:
+
+- **Without transfer learning** (training from scratch) — often their best test
+  accuracy.
+- **With transfer learning** — sometimes *worse* than training from scratch on
+  this dataset.
+
+Other common sources of differences:
+
+- **Backbone training choice**: frozen base vs fine-tuning changes how well the
+  model adapts to RBC morphology.
+- **Input preprocessing**: pretrained CNNs often expect model-specific
+  preprocessing; using only `[0,1]` scaling can reduce transfer-learning
+  performance.
+- **Optimization details**: learning rate, scheduler, augmentation, and epoch
+  count can make “from scratch” training either converge well or collapse.
+
+## In binary classification, what is the difference between using sigmoid vs using logits (`from_logits=True`)?
+
+Both approaches are valid for binary classification, but they must be matched
+correctly:
+
+- **Sigmoid output + binary crossentropy**:
+  model outputs probabilities in `[0, 1]` directly.
+- **Linear output (no sigmoid) + BinaryCrossentropy(from_logits=True)**:
+  model outputs raw scores (logits), and the loss applies sigmoid internally.
+
+In the linked AneRBC research notebooks, the binary head is `Dense(1)` with
+`from_logits=True`. In our notebook, the head is sigmoid with standard
+binary-crossentropy. Both are mathematically compatible choices when used
+consistently, but they can still produce different training dynamics when
+combined with other factors like learning rate, fine-tuning schedule, and
+input preprocessing.
+
+
 ## What is `class_weight`? Explain the given class weights in our project.
 
 `class_weight` changes how much each class contributes to the training loss.
