@@ -7,6 +7,14 @@ information. Strong brightness, contrast, saturation, or hue changes may distort
 clinically useful visual cues. For the first offline augmentation version, only
 geometry-based transforms were used.
 
+## Why does the transformed dataset use MCV thresholds instead of morphology text for the four labels?
+
+MCV is a structured CBC measurement and the existing repo already defines the
+four-class label logic from it: Healthy is class `0`, while anemic samples are
+split into Microcytic, Normocytic, and Macrocytic by MCV. Reusing that rule keeps
+the new transformed dataset consistent with the fusion-model CSVs and avoids
+mixing label definitions from different report sources.
+
 ## Why are augmented rows given blank `processed_image_path` values?
 
 The augmentation script stores real PNG images and updates `image_path`.
@@ -78,3 +86,17 @@ Why our choice is appropriate:
 - Problem type: single-label 4-class classification → **softmax**.
 - Label format: integer class ids → **sparse categorical crossentropy**.
 - Data imbalance: minority classes → add **class weights** (and augmentation).
+
+## Why is the PNG-to-CSV assertion important in the transformed dataset notebook?
+
+The fusion loader expects image features and CBC features to describe the same
+sample. If a PNG is missing its CSV, the sample cannot be loaded as multimodal
+input. If a CSV is missing its PNG, the CBC row has no matching image. The
+same-base assertion catches both problems immediately after transformation.
+
+## What is the main risk of replicating CBC reports for multiple AneRBC-II images?
+
+The replicated CSVs are not independent clinical measurements; they are the same
+patient-level CBC copied for different smear images. This is correct for
+one-to-one file loading, but data splitting must avoid patient leakage when the
+goal is patient-independent evaluation.

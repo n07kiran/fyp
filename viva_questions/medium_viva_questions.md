@@ -6,6 +6,14 @@ Validation and test sets should represent unseen real data. If augmented
 versions are added to validation or test sets, evaluation can become biased and
 over-optimistic. Therefore, only the training Macrocytic images were augmented.
 
+## Why does the transformed dataset augment only Macrocytic images?
+
+Macrocytic is the rarest anemia subtype in the project data, so fixed
+Macrocytic-only augmentation increases representation of the minority class
+without inflating Healthy, Microcytic, or Normocytic. The new transformation
+notebook uses a configurable default of 9 augmented variants per original
+Macrocytic image.
+
 ## Why did we match Macrocytic to Normocytic instead of Microcytic?
 
 Macrocytic is extremely small, so increasing it up to the next-smallest class is
@@ -130,6 +138,22 @@ Feature-level fusion combines both representations before classification, so the
 classifier can learn interactions between morphology and blood-count context.
 This is more informative than image-only or CBC-only modeling for multimodal
 clinical data.
+
+## How does AneRBC-II keep a one-to-one image and CBC mapping?
+
+AneRBC-II has multiple images per patient, but CBC reports are patient-level.
+The transformation notebook derives the 3-digit CBC patient ID from each
+4-digit image ID, reads that patient's CBC once, and writes a replicated
+same-base CSV for every serial image. That gives each `NNNN_SS_{Class}.png` a
+matching `NNNN_SS_{Class}.csv`.
+
+## Why does AneRBC-II prefer AneRBC-I CBC reports first?
+
+The raw AneRBC-II image names include 4-digit patient IDs, while the CBC reports
+use the 3-digit patient IDs already present in AneRBC-I. The transformation
+notebook first reuses the matching AneRBC-I CBC report, then falls back to
+AneRBC-II CBC reports if the preferred file is missing. This keeps CBC sourcing
+consistent while still allowing missing preferred files to be handled.
 
 ## Why are BatchNorm layers kept frozen during stage-2 fine-tuning?
 

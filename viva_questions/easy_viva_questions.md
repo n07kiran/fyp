@@ -18,6 +18,27 @@ image capture.
 The four classes are Healthy, Microcytic, Normocytic, and Macrocytic. The model
 uses one output neuron per class with softmax activation.
 
+## How are the four transformed dataset labels numbered?
+
+The transformed dataset uses the same integer mapping everywhere:
+
+- `0`: Healthy
+- `1`: Microcytic
+- `2`: Normocytic
+- `3`: Macrocytic
+
+## Which MCV thresholds are used for anemic samples?
+
+Healthy samples are always labeled `0`. For anemic samples, MCV decides the
+class: `MCV < 80` is Microcytic, `80 <= MCV <= 100` is Normocytic, and
+`MCV > 100` is Macrocytic.
+
+## What does one-to-one image and CBC mapping mean in the transformed dataset?
+
+It means every output PNG has one CSV with the same base name, and every CSV has
+one matching PNG. This makes fusion-model loading simpler because the image and
+CBC row can be paired directly by filename.
+
 ## What is an epoch?
 
 An **epoch** means one full pass through the entire training dataset.
