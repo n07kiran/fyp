@@ -38,10 +38,13 @@ Optional overrides:
 - `ANERBC_REPO_ROOT`
 - `ANERBC_CHECKPOINT_ROOT`
 - `ANERBC_OUTPUT_ROOT`
+- `ANERBC_USE_LOCAL_METAL=1` to opt into Apple Metal locally
 
 ## Binary Fusion Notebooks
 
 The existing binary fusion notebooks were updated in place to use `transformed_AneRBC-I` split CSVs and the same local/Kaggle path resolver. They still collapse multiclass labels to binary labels: `0=Healthy`, `1=Anemia`.
+
+Local Apple Silicon runs default to CPU because `tensorflow-metal` can terminate the Python process during these training/evaluation graphs. Kaggle GPU behavior is unchanged. The project `venv` should not install `tensorflow-metal` unless you are explicitly testing local Metal acceleration.
 
 ## Checkpoint Behavior
 

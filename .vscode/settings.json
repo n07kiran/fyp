@@ -1,0 +1,11 @@
+{
+    // Jupyter kernel environment variables.
+    // ANERBC_USE_LOCAL_METAL=1 enables the Apple Metal GPU for local TF training.
+    // Without this, the notebooks attempt to disable Metal at runtime which fails
+    // silently in Jupyter (TF is already initialized by ipykernel at kernel start),
+    // leaving the Metal GPU active but with an inconsistent mixed_float16 policy
+    // that can crash the kernel process during training.
+    "jupyter.kernels.environmentVariables": {
+        "ANERBC_USE_LOCAL_METAL": "1"
+    }
+}
