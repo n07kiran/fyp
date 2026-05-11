@@ -1,5 +1,7 @@
 # New Fusion Model Notebook Rewrite (2026-04-26)
 
+Note: this is the original April rewrite note. The current transformed-dataset notebook set and new filenames are documented in `changes_2026-05-11_transformed_anerbc_notebooks.md`.
+
 ## Summary
 
 `Code/newFusionModel` was rewritten from Python scripts into four standalone Jupyter notebooks, one per pretrained backbone.
