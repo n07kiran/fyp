@@ -15,7 +15,7 @@ A Kaggle-ready notebook that trains a **two-input fusion model** (image + CBC) f
   - `BASE_LAYER_NAME = "resnet152v2"`
   - `PREPROCESS_MODE = "tf_minus_one_to_one"`
 - Cleared all outputs/execution counts so the notebook is a clean template.
-- Early Kaggle dataset “sanity check” cells were made non-fatal and standardized to `/kaggle/input`.
+- Early Kaggle dataset path cells now use `/kaggle/input/datasets/n07kiran/transformed-anerbc-dataset/...` (with a fallback to `/kaggle/input/<dataset-slug>` if needed).
 
 ## How to run on Kaggle
 - Attach dataset: `n07kiran/transformed-AneRBC-dataset`
