@@ -1,0 +1,2 @@
+dataset,run_name,backbone,checkpoint_path,test_accuracy,macro_f1,weighted_f1,macro_precision,macro_recall,best_val_accuracy,best_val_loss
+transformed_AneRBC-II,multiClass_transformed_aneRBC_ii_inceptionv3,InceptionV3,application_fallback,0.8422431865828093,0.725515162738817,0.8351988478244937,0.7620440492591343,0.7215997618046799,0.8819444179534912,0.41185063123703003
