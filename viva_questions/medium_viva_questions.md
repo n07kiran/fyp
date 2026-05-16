@@ -197,7 +197,7 @@ In our project, we reuse old binary checkpoints as the pretrained image base for
 fusion. To stay consistent with how those checkpoints were trained:
 
 - VGG16 uses `vgg16_caffe` style preprocessing (RGB->BGR and ImageNet mean subtraction).
-- MobileNetV2, InceptionV3, and ResNet152V2 use `unit_range` (`image / 255.0`).
+- MobileNetV2, InceptionV3, and ResNet152V2 use `tf_minus_one_to_one` (`(image / 127.5) - 1.0`).
 
 Matching preprocessing to checkpoint history is important; if preprocessing is
 mismatched, transfer performance can drop even when architecture is correct.
