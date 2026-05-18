@@ -100,3 +100,19 @@ The replicated CSVs are not independent clinical measurements; they are the same
 patient-level CBC copied for different smear images. This is correct for
 one-to-one file loading, but data splitting must avoid patient leakage when the
 goal is patient-independent evaluation.
+
+## How can we load a saved `.keras` model that contains custom layers?
+
+If a Keras model includes a custom layer (for example, a preprocessing layer),
+Keras must be able to find and reconstruct that class at load time.
+
+Two common solutions are:
+
+- **Register the layer** with `@tf.keras.utils.register_keras_serializable(...)`
+  and implement `get_config()` so Keras can rebuild it from the saved config.
+- **Provide custom objects** when loading, using `custom_objects={...}` or
+  `tf.keras.utils.custom_object_scope(...)` around `tf.keras.models.load_model()`.
+
+If the custom-layer code changes incompatibly (constructor args or behavior),
+loading old artifacts can fail or change preprocessing, so we keep those layer
+definitions stable for reproducibility.

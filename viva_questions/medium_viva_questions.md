@@ -212,3 +212,12 @@ The fusion model has a different task structure because it combines:
 
 So we reuse only the CNN feature extractor weights and build a new fusion head.
 The notebooks also include an assertion to ensure old head layers are not reused.
+
+## Why do we load the explainability model with `compile=False`?
+
+The explainability notebook is **inference-only**, so it does not need the
+optimizer state, training loss function, or training-time metrics.
+
+Loading with `compile=False` makes model loading simpler and more robust (fewer
+dependencies on the training configuration) while still supporting
+`model.predict()` and gradient-based methods like Grad-CAM.

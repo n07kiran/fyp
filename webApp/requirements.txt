@@ -1,0 +1,15 @@
+# AneRBC WebApp Requirements
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+streamlit>=1.33.0
+requests>=2.31.0
+python-multipart>=0.0.9
+pillow>=10.0.0
+numpy>=1.24.0
+pandas>=2.0.0
+matplotlib>=3.8.0
+opencv-python-headless>=4.9.0
+shap>=0.44.0
+scikit-learn>=1.3.0
+httpx>=0.27.0
+python-dotenv>=1.0.0

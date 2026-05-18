@@ -1,0 +1,18 @@
+Dataset: transformed_AneRBC-II
+Backbone: VGG16
+Data root: /kaggle/input/datasets/n07kiran/transformed-anerbc-dataset/transformed_AneRBC-II
+Checkpoint: application fallback
+Test accuracy: 0.893606
+Macro F1: 0.849622
+Weighted F1: 0.893970
+
+              precision    recall  f1-score   support
+
+     Healthy     0.9105    0.9156    0.9130       900
+  Microcytic     0.9258    0.9030    0.9142       732
+  Normocytic     0.7188    0.7372    0.7278       156
+  Macrocytic     0.8140    0.8750    0.8434       120
+
+    accuracy                         0.8936      1908
+   macro avg     0.8422    0.8577    0.8496      1908
+weighted avg     0.8946    0.8936    0.8940      1908
